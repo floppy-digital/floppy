@@ -1,3 +1,5 @@
+/* previously in Crates/index.js */
+
 import React, { useState } from 'react';
 import Grid from '@/components/Crates/Grid';
 import Player3D from '@/components/Crates/Player3D';
