@@ -1,1 +1,2 @@
 public/game/DrumSequencer-HTML5-Shipping.data.gz filter=lfs diff=lfs merge=lfs -text
+public/game/DrumSequencer-HTML5-Shipping.wasm.gz filter=lfs diff=lfs merge=lfs -text
