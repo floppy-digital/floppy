@@ -117,7 +117,6 @@ const ImageEditor = () => {
         setCl({ canvas: _cl, ctx: _clCtx }, { canvas: _clTxt, ctx: _clTxtCtx })
       );
       drawInitialBg(_clTxtCtx, _clCtx, _recordCtx);
-      setPrepped(true);
     };
 
     prepareCanvas();
