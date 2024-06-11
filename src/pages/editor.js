@@ -119,7 +119,7 @@ const ImageEditor = () => {
       drawInitialBg(_clTxtCtx, _clCtx, _recordCtx);
     };
 
-    prepareCanvas();
+    // prepareCanvas();
   }, [dispatch]);
 
   return (
