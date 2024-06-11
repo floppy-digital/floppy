@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { corsAssetURL } from '../../../../lib/utils';
+import { corsAssetURL } from '@/lib/utils';
 import { SizeSelector } from './Controls';
-import { setSize } from '../../../../Redux/editor/stickers';
+import { setSize } from '@/lib/Redux/editor/stickers';
 
 const Stickers = ({ chooseStamp }) => {
   const size = useSelector((state) => state.editor.stickers.size);

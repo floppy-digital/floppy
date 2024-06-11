@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setArtistPosition,
   setTrackPosition,
-} from '../../Redux/editor/centerLabel';
-import { CANVAS_HEIGHT } from '../../lib/utils';
+} from '@/lib/Redux/editor/centerLabel';
+import { CANVAS_HEIGHT } from '@/lib/utils';
 
 const Canvas = () => {
   const dispatch = useDispatch();

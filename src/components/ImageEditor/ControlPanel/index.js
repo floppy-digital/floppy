@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setArtist, setTrack } from '../../../Redux/metadata';
+import { setArtist, setTrack } from '@/lib/Redux/metadata';
 import SaveButton from './SaveButton';
-import LayerSelector from './LayerSelector';
-import { corsAssetURL } from '../../../lib/utils';
+import LayerSelector from '@/components/ImageEditor/ControlPanel/LayerSelector';
+import { corsAssetURL } from '@/lib/utils';
 
 const ControlPanel = ({ drawInitialBg }) => {
   const dispatch = useDispatch();

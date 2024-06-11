@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { corsAssetURL } from '../../../../lib/utils';
+import { corsAssetURL } from '@/lib/utils';
 import { ColorSelector, SizeSelector } from './Controls';
-import { setColor, setFilter, setSize } from '../../../../Redux/editor/stamps';
+import { setColor, setFilter, setSize } from '@/lib/Redux/editor/stamps';
 
 const Stamps = ({ chooseStamp }) => {
   const size = useSelector((state) => state.editor.stamps.size);

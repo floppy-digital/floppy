@@ -117,10 +117,11 @@ const ImageEditor = () => {
         setCl({ canvas: _cl, ctx: _clCtx }, { canvas: _clTxt, ctx: _clTxtCtx })
       );
       drawInitialBg(_clTxtCtx, _clCtx, _recordCtx);
+      setPrepped(true);
     };
 
     prepareCanvas();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="editor-wrapper ff-3" id="dub" onMouseMove={moveOverlay}>

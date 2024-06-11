@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTemplate } from '../../../../Redux/editor/global';
-import { setFilter, setColor } from '../../../../Redux/editor/template';
-import { corsAssetURL, CANVAS_HEIGHT } from '../../../../lib/utils';
+import { setTemplate } from '@/lib/Redux/editor/global';
+import { setFilter, setColor } from '@/lib/Redux/editor/template';
+import { corsAssetURL, CANVAS_HEIGHT } from '@/lib/utils';
 import { ColorSelector } from './Controls';
 
 const Templates = () => {

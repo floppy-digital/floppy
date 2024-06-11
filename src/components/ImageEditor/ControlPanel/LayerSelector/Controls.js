@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, setSize, setStamp } from '../../../../Redux/editor/global';
+import { setFilter, setSize, setStamp } from '@/lib/Redux/editor/global';
 import {
   Color,
   Solver,
   CANVAS_HEIGHT,
   getFontName,
   corsAssetURL,
-} from '../../../../lib/utils';
+} from '@/lib/utils';
 
 const ColorSelector = ({
   action,

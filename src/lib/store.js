@@ -1,11 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import appReducer from './Redux';
 
-const middleware = [createLogger({ collapsed: true })];
+const logger = [createLogger({ collapsed: true })];
 
-export default createStore(
-  appReducer,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+const store = configureStore({
+  reducer: appReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production',
+});
+
+export default store;
+
+// export default createStore(
+//   appReducer,
+//   composeWithDevTools(applyMiddleware(...middleware))
+// );

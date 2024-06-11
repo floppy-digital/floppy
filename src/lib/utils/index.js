@@ -7,7 +7,9 @@ const assetBaseURL = 'https://dg3mov3znt8u.cloudfront.net/upload';
 
 const moralisGateway = 'https://gateway.moralisipfs.com/ipfs';
 
-const CANVAS_HEIGHT = window.innerWidth / 2.25;
+// TODO: set this in redux as a global variable of the editor reducer
+// in useEffect -> set CANVVAS_HEIGHT when page loads
+const CANVAS_HEIGHT = 1440 / 2.25;
 
 const downloadWAV = async (url, name) => {
   const { data } = await axios.post('/api/ipfs/fetch', { url });

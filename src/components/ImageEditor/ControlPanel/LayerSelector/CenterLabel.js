@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { corsAssetURL } from '../../../../lib/utils';
+import { corsAssetURL } from '@/lib/utils';
 import {
   setStampSize,
   setStampFilter,
@@ -13,8 +13,8 @@ import {
   setTrackFontSize,
   setCenterLabelColor,
   setStampColor,
-} from '../../../../Redux/editor/centerLabel';
-import { setArtist, setTrack } from '../../../../Redux/metadata';
+} from '@/lib/Redux/editor/centerLabel';
+import { setArtist, setTrack } from '@/lib/Redux/metadata';
 import {
   ColorSelector,
   SizeSelector,

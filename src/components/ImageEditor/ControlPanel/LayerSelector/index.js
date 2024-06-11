@@ -5,12 +5,12 @@ import {
   setStamp,
   setSize,
   setFilter,
-} from '../../../../Redux/editor/global';
+} from '@/lib/Redux/editor/global';
 import Templates from './Templates';
 import Stamps from './Stamps';
 import Stickers from './Stickers';
 import CenterLabel from './CenterLabel';
-import { corsAssetURL } from '../../../../lib/utils';
+import { corsAssetURL } from '@/lib/utils';
 
 const LayerTitle = ({ title, size, filter }) => {
   const dispatch = useDispatch();
