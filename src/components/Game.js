@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -94,11 +95,11 @@ const Game = () => {
           </div>
         </div>
       )}
-      {!started && (
+      {/* {!started && (
         <div id="loading-modal">
           <p>LOADING</p>
         </div>
-      )}
+      )} */}
 
       {<HTMLPlayer setCtx={setCtx} setStarted={setStarted} />}
       {sourceRef.current && (
