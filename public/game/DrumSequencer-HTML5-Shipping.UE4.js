@@ -333,7 +333,8 @@ function detectWebGL() {
   } finally {
     canvas.removeEventListener('webglcontextcreationerror', testError, false);
     if (targetOffscreenCanvas) {
-      delete canvas;
+      // delete canvas; <- next.js running in strict mode doesn't like this
+      canvas = null;
     }
   }
   return 0;
@@ -810,6 +811,7 @@ Module['instantiateWasm'] = function (info, receiveInstance) {
       );
       return wasmInstantiate.then(function (output) {
         var instance = output.instance || output;
+        // eslint-disable-next-line @next/next/no-assign-module-variable
         var module = output.module;
         taskFinished(TASK_COMPILING);
         Module['wasmInstantiateActionResolve'](instance);

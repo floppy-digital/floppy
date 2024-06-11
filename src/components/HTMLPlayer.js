@@ -1,23 +1,7 @@
-import React, { useEffect } from 'react';
+'use client';
+import Script from 'next/script';
 
 const HTMLPlayer = ({ setCtx, setStarted }) => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'game/DrumSequencer-HTML5-Shipping.UE4.js';
-    script.async = true;
-    script.onload = () => {
-      Module.onGameReadyFn = () => {
-        setStarted(true);
-      };
-      setCtx(Module);
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="game-wrapper">
       <div className="wrapper" id="mainarea">
@@ -108,6 +92,16 @@ const HTMLPlayer = ({ setCtx, setStarted }) => {
         id="logwindow"
         style={{ display: 'none' }}
       ></div>
+      <Script
+        async
+        src="game/DrumSequencer-HTML5-Shipping.UE4.js"
+        onLoad={() => {
+          Module.onGameReadyFn = () => {
+            setStarted(true);
+          };
+          setCtx(Module);
+        }}
+      />
     </div>
   );
 };
