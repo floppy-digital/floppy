@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setFrontURL, setBackURL } from '../../../Redux/metadata';
-import { corsAssetURL } from '../../../lib/utils';
+import { useRouter } from 'next/router';
+import { setFrontURL, setBackURL } from '@/lib/Redux/metadata';
+import { corsAssetURL } from '@/lib/utils';
 
 const SaveButton = ({ clearCanvas }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const dispatch = useDispatch();
   const artist = useSelector((state) => state.metadata.artist);
   const track = useSelector((state) => state.metadata.track);
@@ -86,7 +86,7 @@ const SaveButton = ({ clearCanvas }) => {
   const saveAndDownload = () => {
     drawFinalImages();
     clearAndReset();
-    navigate('/upload');
+    router.push('/upload');
   };
 
   return (

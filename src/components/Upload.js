@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { corsAssetURL, moralisGateway } from '../lib/utils';
 import { saveAssetsToIPFS, saveMetadataToIPFS } from '../lib/ipfs';
@@ -19,7 +19,7 @@ export default function Upload() {
   const [showMessage, setShowMessage] = useState(false);
   const [audioSrc, setAudioSrc] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const updatePrice = (e) => {
     setPrice(e.target.value);
@@ -83,7 +83,7 @@ export default function Upload() {
       setDisabled(true);
       setShowMessage(true);
       await saveToDatabase(frontURL, backURL, artistName, trackName);
-      navigate('/crates');
+      router.push('/crates');
     }
   };
 
@@ -139,7 +139,7 @@ export default function Upload() {
           src={`${corsAssetURL}/bg_images/save_redux.png`}
           onClick={saveFinal}
         />
-        <button onClick={() => navigate('/')}>X</button>
+        <button onClick={() => router.push('/')}>X</button>
       </div>
       {showMessage && (
         <div className="message-container crates-border">

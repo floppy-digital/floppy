@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTrack, setAudioURL } from '../Redux/metadata';
-import SplashPage from './SplashPage';
-import HTMLPlayer from './HTMLPlayer';
-import { listenForRecordOn, listenForRecordOff } from '../lib/db';
+import { setTrack, setAudioURL } from '@/lib/Redux/metadata';
+import HTMLPlayer from '@/components/HTMLPlayer';
+import { listenForRecordOn, listenForRecordOff } from '@/lib/db';
 
 const initialMessage = 'new upload, do you want to go to the image editor?';
 
@@ -25,7 +24,7 @@ const Game = () => {
   const loadingVideoRef = useRef();
   const loadingAudioRef = useRef();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const record = () => {
     sourceRef.current = '';
@@ -63,7 +62,7 @@ const Game = () => {
 
   const go = () => {
     dispatch(setAudioURL(sourceRef.current));
-    navigate('/editor');
+    router.push('/editor');
   };
 
   const stay = async () => {
