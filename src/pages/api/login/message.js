@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const { db } = require('../firebase');
+const { db } = require('@/lib/firebaseServer');
 
 export default async function handler(req, res) {
   try {

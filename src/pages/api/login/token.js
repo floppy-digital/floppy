@@ -1,4 +1,4 @@
-const { db, auth } = require('../firebase');
+const { db, auth } = require('@/lib/firebaseServer');
 const { recoverPersonalSignature } = require('@metamask/eth-sig-util');
 
 function isValidSignature(address, signature, message) {

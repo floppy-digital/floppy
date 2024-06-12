@@ -1,4 +1,4 @@
-import { db } from './firebaseClient';
+import { db } from '@/lib/firebaseClient';
 import {
   collection,
   doc,
