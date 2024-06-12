@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import Draggable from 'react-draggable';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setArtistPosition,
-  setTrackPosition,
-} from '@/lib/Redux/editor/centerLabel';
+
 import { CANVAS_HEIGHT } from '@/lib/utils';
 
 const Canvas = () => {
-  const dispatch = useDispatch();
-  const stamp = useSelector((state) => state.editor.global.stamp);
-  const layer = useSelector((state) => state.editor.global.layer);
-  const size = useSelector((state) => state.editor.global.size);
-  const filter = useSelector((state) => state.editor.global.filter);
-  const fg = useSelector((state) => state.editor.global.fg);
-  const clTexture = useSelector((state) => state.editor.global.clTexture);
-  const artistFont = useSelector((state) => state.editor.cl.artistFont);
-  const artistSize = useSelector((state) => state.editor.cl.artistFontSize);
-  const artistColor = useSelector((state) => state.editor.cl.artistFontColor);
-  const trackFont = useSelector((state) => state.editor.cl.trackFont);
-  const trackSize = useSelector((state) => state.editor.cl.trackFontSize);
-  const trackColor = useSelector((state) => state.editor.cl.trackFontColor);
-  const artist = useSelector((state) => state.metadata.artist);
-  const track = useSelector((state) => state.metadata.track);
+  const { editor, setArtistPosition, setTrackPosition } =
+    useContext(editorContext);
+  const stamp = editor.stamp;
+  const layer = editor.layer;
+  const size = editor.overlaySize;
+  const filter = editor.overlayFilter;
+  const fg = editor.fgNode;
+  const clTexture = editor.clTextureNode;
+  const artistFont = editor.cl.artistFont;
+  const artistSize = editor.cl.artistFontSize;
+  const artistColor = editor.cl.artistFontColor;
+  const trackFont = editor.cl.trackFont;
+  const trackSize = editor.cl.trackFontSize;
+  const trackColor = editor.cl.trackFontColor;
+  const artist = 'artist';
+  const track = 'track';
+  // const artist = metadata.artist;
+  // const track = metadata.track;
   const [coords, setCoords] = useState(null);
 
   const handleStop = (e) => {
@@ -32,9 +32,9 @@ const Canvas = () => {
     const _y = targetRect.bottom - canvasRect.top - targetRect.height / 4;
 
     if (e.target.id === 'artiste') {
-      dispatch(setArtistPosition([_x, _y]));
+      setArtistPosition([_x, _y]);
     } else {
-      dispatch(setTrackPosition([_x, _y]));
+      setTrackPosition([_x, _y]);
     }
   };
 
@@ -48,6 +48,7 @@ const Canvas = () => {
   };
 
   const draw = () => {
+    if (!stamp) return;
     const [x, y] = coords;
     const offsetX = x - (stamp.naturalWidth * size) / 2;
     const offsetY = y - (stamp.naturalHeight * size) / 2;

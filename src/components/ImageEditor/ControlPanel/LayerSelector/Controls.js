@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, setSize, setStamp } from '@/lib/Redux/editor/global';
+import React, { useContext, useState } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import {
   Color,
   Solver,
@@ -17,11 +16,11 @@ const ColorSelector = ({
   isCL = false,
   isTemplate = false,
 }) => {
-  const dispatch = useDispatch();
-  const bg = useSelector((state) => state.editor.global.bg);
-  const template = useSelector((state) => state.editor.global.template);
-  const overlay = useSelector((state) => state.editor.global.overlay);
-  const cl = useSelector((state) => state.editor.global.cl);
+  const { editor, setOverlayFilter } = useContext(editorContext);
+  const bg = editor.bgNode;
+  const template = editor.templateImage;
+  const overlay = editor.overlay;
+  const cl = editor.clNode;
   const dimensions = isFont ? '50px' : '100px';
 
   const drawBg = (filter) => {
@@ -41,7 +40,7 @@ const ColorSelector = ({
   };
 
   const setTextColor = (e) => {
-    dispatch(action(e.target.value));
+    e.target.value;
   };
 
   const setColorFilter = (e) => {
@@ -56,9 +55,9 @@ const ColorSelector = ({
 
     const filterCSS = result.filter;
     overlay.style.filter = filterCSS;
-    dispatch(setFilter(filterCSS));
-    dispatch(action(filterCSS));
-    dispatch(action2(e.target.value));
+    setOverlayFilter(filterCSS);
+    action(filterCSS);
+    action2(e.target.value);
     if (isTemplate && template) {
       drawBg(filterCSS);
     } else if (isCL) {
@@ -86,10 +85,10 @@ const ColorSelector = ({
 };
 
 const SizeSelector = ({ action, size, text = false }) => {
-  const dispatch = useDispatch();
+  const { setOverlaySize } = useContext(editorContext);
   const setStampSize = (e) => {
-    dispatch(setSize(e.target.value));
-    dispatch(action(e.target.value));
+    setOverlaySize(e.target.value);
+    action(e.target.value);
   };
   const min = text ? '8' : '0.25';
   const max = text ? '40' : '0.5';
@@ -114,14 +113,14 @@ const SizeSelector = ({ action, size, text = false }) => {
 };
 
 const TextInput = ({ action, label }) => {
-  const dispatch = useDispatch();
+  const { setStamp } = useContext(editorContext);
 
   const hideOverlay = () => {
-    dispatch(setStamp(null));
+    setStamp(null);
   };
 
   const write = (e) => {
-    dispatch(action(e.target.value));
+    action(e.target.value);
   };
   return (
     <div className="text-input" id={label}>
@@ -132,19 +131,17 @@ const TextInput = ({ action, label }) => {
 
 const FontSelector = ({ action, destination }) => {
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
 
   const toggleShow = () => {
     setShow(!show);
   };
 
   const selectFont = (e) => {
-    dispatch(
-      action({
-        class: e.target.className.split(' ')[0],
-        name: getFontName(e.target.id),
-      })
-    );
+    action({
+      class: e.target.className.split(' ')[0],
+      name: getFontName(e.target.id),
+    });
+
     setShow(false);
   };
 

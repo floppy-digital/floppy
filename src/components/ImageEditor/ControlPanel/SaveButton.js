@@ -1,30 +1,32 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import { useRouter } from 'next/router';
 import { setFrontURL, setBackURL } from '@/lib/Redux/metadata';
 import { corsAssetURL } from '@/lib/utils';
 
 const SaveButton = ({ clearCanvas }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const artist = useSelector((state) => state.metadata.artist);
-  const track = useSelector((state) => state.metadata.track);
-  const artistPos = useSelector((state) => state.editor.cl.artistPosition);
-  const artistFont = useSelector((state) => state.editor.cl.artistFont);
-  const artistFontSize = useSelector((state) => state.editor.cl.artistFontSize);
-  const artistColor = useSelector((state) => state.editor.cl.artistFontColor);
-  const trackPos = useSelector((state) => state.editor.cl.trackPosition);
-  const trackFont = useSelector((state) => state.editor.cl.trackFont);
-  const trackFontSize = useSelector((state) => state.editor.cl.trackFontSize);
-  const trackFontColor = useSelector((state) => state.editor.cl.trackFontColor);
-  const fg = useSelector((state) => state.editor.global.fg);
-  const bg = useSelector((state) => state.editor.global.bg);
-  const bgTxt = useSelector((state) => state.editor.global.bgTexture);
-  const cl = useSelector((state) => state.editor.global.cl);
-  const clTxt = useSelector((state) => state.editor.global.clTexture);
-  const record = useSelector((state) => state.editor.global.record);
-  const front = useSelector((state) => state.editor.global.front);
-  const back = useSelector((state) => state.editor.global.back);
+  const { editor } = useContext(editorContext);
+  const artist = 'artist';
+  const track = 'track';
+  // const artist = metadata.artist;
+  // const track = metadata.track;
+  const artistPos = editor.cl.artistPosition;
+  const artistFont = editor.cl.artistFont;
+  const artistFontSize = editor.cl.artistFontSize;
+  const artistColor = editor.cl.artistFontColor;
+  const trackPos = editor.cl.trackPosition;
+  const trackFont = editor.cl.trackFont;
+  const trackFontSize = editor.cl.trackFontSize;
+  const trackFontColor = editor.cl.trackFontColor;
+  const fg = editor.fgNode;
+  const bg = editor.bgNode;
+  const bgTxt = editor.bgTextureNode;
+  const cl = editor.clNode;
+  const clTxt = editor.clTextureNode;
+  const record = editor.recordNode;
+  const front = editor.front;
+  const back = editor.back;
 
   const writeTextToCanvas = (ctx, text, posX, posY, artist = true) => {
     if (artist) {
@@ -73,8 +75,8 @@ const SaveButton = ({ clearCanvas }) => {
     back.ctx.restore();
     const backImgURL = back.canvas.toDataURL('image/png');
 
-    dispatch(setFrontURL(frontImgURL));
-    dispatch(setBackURL(backImgURL));
+    // dispatch(setFrontURL(frontImgURL));
+    // dispatch(setBackURL(backImgURL));
   };
 
   const clearAndReset = () => {

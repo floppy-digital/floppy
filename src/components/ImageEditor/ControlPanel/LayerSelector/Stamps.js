@@ -1,12 +1,13 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import { corsAssetURL } from '@/lib/utils';
 import { ColorSelector, SizeSelector } from './Controls';
-import { setColor, setFilter, setSize } from '@/lib/Redux/editor/stamps';
 
 const Stamps = ({ chooseStamp }) => {
-  const size = useSelector((state) => state.editor.stamps.size);
-  const colorValue = useSelector((state) => state.editor.stamps.color);
+  const { editor, setStampColor, setStampFilter, setStampSize } =
+    useContext(editorContext);
+  const size = editor.stamps.size;
+  const colorValue = editor.stamps.color;
   return (
     <div className="container controls-drawer">
       <div className="assets-container-wrapper">
@@ -51,11 +52,11 @@ const Stamps = ({ chooseStamp }) => {
       </div>
       <div className="controls-container">
         <ColorSelector
-          action={setFilter}
-          action2={setColor}
+          action={setStampFilter}
+          action2={setStampColor}
           value={colorValue}
         />
-        <SizeSelector action={setSize} size={size} />
+        <SizeSelector action={setStampSize} size={size} />
       </div>
     </div>
   );

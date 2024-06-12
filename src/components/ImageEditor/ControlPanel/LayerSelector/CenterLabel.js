@@ -1,19 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import { corsAssetURL } from '@/lib/utils';
-import {
-  setStampSize,
-  setStampFilter,
-  setCenterLabelFilter,
-  setArtistFont,
-  setArtistFontColor,
-  setArtistFontSize,
-  setTrackFont,
-  setTrackFontColor,
-  setTrackFontSize,
-  setCenterLabelColor,
-  setStampColor,
-} from '@/lib/Redux/editor/centerLabel';
 import { setArtist, setTrack } from '@/lib/Redux/metadata';
 import {
   ColorSelector,
@@ -23,13 +10,27 @@ import {
 } from './Controls';
 
 const CenterLabel = ({ chooseStamp }) => {
-  const clColor = useSelector((state) => state.editor.cl.clColor);
-  const stampColor = useSelector((state) => state.editor.cl.stampColor);
-  const stampSize = useSelector((state) => state.editor.cl.stampSize);
-  const artistColor = useSelector((state) => state.editor.cl.artistFontColor);
-  const trackColor = useSelector((state) => state.editor.cl.trackFontColor);
-  const artistFontSize = useSelector((state) => state.editor.cl.artistFontSize);
-  const trackFontSize = useSelector((state) => state.editor.cl.trackFontSize);
+  const {
+    editor,
+    setCLStampSize,
+    setCLStampFilter,
+    setCLStampColor,
+    setCenterLabelFilter,
+    setArtistFont,
+    setArtistFontColor,
+    setArtistFontSize,
+    setTrackFont,
+    setTrackFontColor,
+    setTrackFontSize,
+    setCenterLabelColor,
+  } = useContext(editorContext);
+  const clColor = editor.cl.clColor;
+  const stampColor = editor.cl.stampColor;
+  const stampSize = editor.cl.stampSize;
+  const artistColor = editor.cl.artistFontColor;
+  const trackColor = editor.cl.trackFontColor;
+  const artistFontSize = editor.cl.artistFontSize;
+  const trackFontSize = editor.cl.trackFontSize;
 
   return (
     <div className="container controls-drawer">
@@ -52,8 +53,8 @@ const CenterLabel = ({ chooseStamp }) => {
         <div>
           <div className="cl_color_selector">
             <ColorSelector
-              action={setStampFilter}
-              action2={setStampColor}
+              action={setCLStampFilter}
+              action2={setCLStampColor}
               value={stampColor}
             />
             <div id="cl-color-wrapper">
@@ -69,7 +70,7 @@ const CenterLabel = ({ chooseStamp }) => {
               />
             </div>
           </div>
-          <SizeSelector action={setStampSize} size={stampSize} />
+          <SizeSelector action={setCLStampSize} size={stampSize} />
         </div>
         <div className="track-info-input">
           <div className="">

@@ -11,8 +11,8 @@ export const EditorProvider = ({ children }) => {
     setStamp: (stamp) => {
       dispatch({ type: actions.SET_GLOBAL_STAMP, stamp });
     },
-    setTemplate: (template) => {
-      dispatch({ type: actions.SET_TEMPLATE, template });
+    setTemplate: (templateImage) => {
+      dispatch({ type: actions.SET_TEMPLATE, templateImage });
     },
     setLayer: (layer) => {
       dispatch({ type: actions.SET_LAYER, layer });
@@ -20,86 +20,86 @@ export const EditorProvider = ({ children }) => {
     setOverlay: (overlay) => {
       dispatch({ type: actions.SET_OVERLAY, overlay });
     },
-    setSize: (size) => {
+    setOverlaySize: (size) => {
       dispatch({ type: actions.SET_OVERLAY_SIZE, size });
     },
-    setFilter: (filter) => {
+    setOverlayFilter: (filter) => {
       dispatch({ type: actions.SET_OVERLAY_FILTER, filter });
     },
-    setRecord: (record) => {
-      dispatch({ type: actions.SET_RECORD, record });
+    setRecordNodes: (recordNode) => {
+      dispatch({ type: actions.SET_RECORD_NODES, recordNode });
     },
-    setBg: (bg, bgTexture) => {
-      dispatch({ type: actions.SET_BG_NODES, bg, bgTexture });
+    setBgNodes: (bgNode, bgTextureNode) => {
+      dispatch({ type: actions.SET_BG_NODES, bgNode, bgTextureNode });
     },
-    setCl: (cl, clTexture) => {
-      dispatch({ type: actions.SET_CENTERLABEL_NODES, cl, clTexture });
+    setClNodes: (clNode, clTextureNode) => {
+      dispatch({ type: actions.SET_CENTERLABEL_NODES, clNode, clTextureNode });
     },
-    setFg: (fg) => {
-      dispatch({ type: actions.SET_FG_NODES, fg });
+    setFgNodes: (fgNode) => {
+      dispatch({ type: actions.SET_FG_NODES, fgNode });
     },
-    setFront: (front) => {
+    setFrontNodes: (front) => {
       dispatch({ type: actions.SET_FRONT_NODES, front });
     },
-    setBack: (back) => {
+    setBackNodes: (back) => {
       dispatch({ type: actions.SET_BACK_NODES, back });
     },
-    setStampSize: (size) => {
-      dispatch({ type: SET_CL_STAMP_SIZE, size });
+    setCLStampSize: (size) => {
+      dispatch({ type: actions.SET_CL_STAMP_SIZE, size });
     },
-    setStampFilter: (filter) => {
-      dispatch({ type: SET_CL_STAMP_FILTER, filter });
+    setCLStampFilter: (filter) => {
+      dispatch({ type: actions.SET_CL_STAMP_FILTER, filter });
     },
-    setStampColor: (color) => {
-      dispatch({ type: SET_CL_STAMP_COLOR, color });
+    setCLStampColor: (color) => {
+      dispatch({ type: actions.SET_CL_STAMP_COLOR, color });
     },
     setCenterLabelFilter: (filter) => {
-      dispatch({ type: SET_CENTERLABEL_FILTER, filter });
+      dispatch({ type: actions.SET_CENTERLABEL_FILTER, filter });
     },
     setCenterLabelColor: (color) => {
-      dispatch({ type: SET_CENTERLABEL_COLOR, color });
+      dispatch({ type: actions.SET_CENTERLABEL_COLOR, color });
     },
     setArtistPosition: (position) => {
-      dispatch({ type: SET_ARTIST_POSITION, position });
+      dispatch({ type: actions.SET_ARTIST_POSITION, position });
     },
     setArtistFont: (font) => {
-      dispatch({ type: SET_ARTIST_FONT, font });
+      dispatch({ type: actions.SET_ARTIST_FONT, font });
     },
     setArtistFontColor: (color) => {
-      dispatch({ type: SET_ARTIST_FONT_COLOR, color });
+      dispatch({ type: actions.SET_ARTIST_FONT_COLOR, color });
     },
     setArtistFontSize: (size) => {
-      dispatch({ type: SET_ARTIST_FONT_SIZE, size });
+      dispatch({ type: actions.SET_ARTIST_FONT_SIZE, size });
     },
     setTrackPosition: (position) => {
-      dispatch({ type: SET_TRACK_POSITION, position });
+      dispatch({ type: actions.SET_TRACK_POSITION, position });
     },
     setTrackFont: (font) => {
-      dispatch({ type: SET_TRACK_FONT, font });
+      dispatch({ type: actions.SET_TRACK_FONT, font });
     },
     setTrackFontColor: (color) => {
-      dispatch({ type: SET_TRACK_FONT_COLOR, color });
+      dispatch({ type: actions.SET_TRACK_FONT_COLOR, color });
     },
     setTrackFontSize: (size) => {
-      dispatch({ type: SET_TRACK_FONT_SIZE, size });
+      dispatch({ type: actions.SET_TRACK_FONT_SIZE, size });
     },
-    setFilter: (filter) => {
-      dispatch({ type: SET_STAMP_FILTER, filter });
+    setStampFilter: (filter) => {
+      dispatch({ type: actions.SET_STAMP_FILTER, filter });
     },
-    setColor: (color) => {
-      dispatch({ type: SET_STAMP_COLOR, color });
+    setStampColor: (color) => {
+      dispatch({ type: actions.SET_STAMP_COLOR, color });
     },
-    setSize: (size) => {
-      dispatch({ type: SET_STAMP_SIZE, size });
+    setStampSize: (size) => {
+      dispatch({ type: actions.SET_STAMP_SIZE, size });
     },
-    setSize: (size) => {
-      dispatch({ type: SET_STICKER_SIZE, size });
+    setStickerSize: (size) => {
+      dispatch({ type: actions.SET_STICKER_SIZE, size });
     },
-    setFilter: (filter) => {
-      dispatch({ type: SET_TEMPLATE_FILTER, filter });
+    setTemplateFilter: (filter) => {
+      dispatch({ type: actions.SET_TEMPLATE_FILTER, filter });
     },
-    setColor: (color) => {
-      dispatch({ type: SET_TEMPLATE_COLOR, color });
+    setTemplateColor: (color) => {
+      dispatch({ type: actions.SET_TEMPLATE_COLOR, color });
     },
   };
 

@@ -4,7 +4,7 @@ export const actions = {
   SET_LAYER: 'SET_LAYER',
   SET_OVERLAY: 'SET_OVERLAY',
   SET_OVERLAY_SIZE: 'SET_OVERLAY_SIZE',
-  SET_RECORD: 'SET_RECORD',
+  SET_RECORD_NODES: 'SET_RECORD_NODES',
   SET_OVERLAY_FILTER: 'SET_OVERLAY_FILTER',
   SET_BG_NODES: 'SET_BG_NODES',
   SET_CENTERLABEL_NODES: 'SET_CENTERLABEL_NODES',
@@ -37,11 +37,11 @@ const initFilter =
 
 export const initialState = {
   stamp: null,
-  template: null,
+  templateImage: null,
   overlay: null,
   layer: 'template',
-  size: 0.5,
-  filter: null,
+  overlaySize: 0.5,
+  overlayFilter: null,
   bgNode: {},
   bgTextureNode: {},
   recordNode: {},
@@ -82,17 +82,17 @@ export const editorReducer = (state = initState, action) => {
     case actions.SET_GLOBAL_STAMP:
       return { ...state, stamp: action.stamp };
     case actions.SET_TEMPLATE:
-      return { ...state, template: action.template };
+      return { ...state, templateImage: action.templateImage };
     case actions.SET_LAYER:
       return { ...state, layer: action.layer };
     case actions.SET_OVERLAY:
       return { ...state, overlay: action.overlay };
     case actions.SET_OVERLAY_SIZE:
-      return { ...state, size: action.size };
-    case actions.SET_RECORD:
-      return { ...state, record: action.record };
+      return { ...state, overlaySize: action.size };
     case actions.SET_OVERLAY_FILTER:
-      return { ...state, filter: action.filter };
+      return { ...state, overlayFilter: action.filter };
+    case actions.SET_RECORD_NODES:
+      return { ...state, recordNode: action.recordNode };
     case actions.SET_BG_NODES:
       return {
         ...state,
@@ -112,43 +112,46 @@ export const editorReducer = (state = initState, action) => {
     case actions.SET_BACK_NODES:
       return { ...state, backNode: action.backNode };
     case actions.SET_CL_STAMP_SIZE:
-      return { ...state, cl: { ...cl, stampSize: action.size } };
+      return { ...state, cl: { ...state.cl, stampSize: action.size } };
     case actions.SET_CL_STAMP_FILTER:
-      return { ...state, cl: { ...cl, stampFilter: action.filter } };
+      return { ...state, cl: { ...state.cl, stampFilter: action.filter } };
     case actions.SET_CL_STAMP_COLOR:
-      return { ...state, cl: { ...cl, stampColor: action.color } };
+      return { ...state, cl: { ...state.cl, stampColor: action.color } };
     case actions.SET_CENTERLABEL_FILTER:
-      return { ...state, cl: { ...cl, clFilter: action.filter } };
+      return { ...state, cl: { ...state.cl, clFilter: action.filter } };
     case actions.SET_CENTERLABEL_COLOR:
-      return { ...state, cl: { ...cl, clColor: action.color } };
+      return { ...state, cl: { ...state.cl, clColor: action.color } };
     case actions.SET_ARTIST_POSITION:
-      return { ...state, cl: { ...cl, artistPosition: action.position } };
+      return { ...state, cl: { ...state.cl, artistPosition: action.position } };
     case actions.SET_ARTIST_FONT:
-      return { ...state, cl: { ...cl, artistFont: action.font } };
+      return { ...state, cl: { ...state.cl, artistFont: action.font } };
     case actions.SET_ARTIST_FONT_COLOR:
-      return { ...state, cl: { ...cl, artistFontColor: action.color } };
+      return { ...state, cl: { ...state.cl, artistFontColor: action.color } };
     case actions.SET_ARTIST_FONT_SIZE:
-      return { ...state, cl: { ...cl, artistFontSize: action.size } };
+      return { ...state, cl: { ...state.cl, artistFontSize: action.size } };
     case actions.SET_TRACK_POSITION:
-      return { ...state, cl: { ...cl, trackPosition: action.position } };
+      return { ...state, cl: { ...state.cl, trackPosition: action.position } };
     case actions.SET_TRACK_FONT:
-      return { ...state, cl: { ...cl, trackFont: action.font } };
+      return { ...state, cl: { ...state.cl, trackFont: action.font } };
     case actions.SET_TRACK_FONT_COLOR:
-      return { ...state, cl: { ...cl, trackFontColor: action.color } };
+      return { ...state, cl: { ...state.cl, trackFontColor: action.color } };
     case actions.SET_TRACK_FONT_SIZE:
-      return { ...state, cl: { ...cl, trackFontSize: action.size } };
+      return { ...state, cl: { ...state.cl, trackFontSize: action.size } };
     case actions.SET_STAMP_FILTER:
-      return { ...state, stamps: { ...stamps, filter: action.filter } };
+      return { ...state, stamps: { ...state.stamps, filter: action.filter } };
     case actions.SET_STAMP_COLOR:
-      return { ...state, stamps: { ...stamps, color: action.color } };
+      return { ...state, stamps: { ...state.stamps, color: action.color } };
     case actions.SET_STAMP_SIZE:
-      return { ...state, stamps: { ...stamps, size: action.size } };
+      return { ...state, stamps: { ...state.stamps, size: action.size } };
     case actions.SET_STICKER_SIZE:
       return { ...state, stickerSize: action.size };
     case actions.SET_TEMPLATE_FILTER:
-      return { ...state, template: { ...template, filter: action.filter } };
+      return {
+        ...state,
+        template: { ...state.template, filter: action.filter },
+      };
     case actions.SET_TEMPLATE_COLOR:
-      return { ...state, template: { ...template, color: action.color } };
+      return { ...state, template: { ...state.template, color: action.color } };
     default:
       return state;
   }

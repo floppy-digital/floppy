@@ -1,11 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import { corsAssetURL } from '@/lib/utils';
 import { SizeSelector } from './Controls';
-import { setSize } from '@/lib/Redux/editor/stickers';
 
 const Stickers = ({ chooseStamp }) => {
-  const size = useSelector((state) => state.editor.stickers.size);
+  const { editor, setStickerSize } = useContext(editorContext);
+  const size = editor.stickerSize;
   return (
     <div className="container controls-drawer">
       <div className="assets-container-wrapper">
@@ -35,7 +35,7 @@ const Stickers = ({ chooseStamp }) => {
         </div>
       </div>
       <div className="controls-container">
-        <SizeSelector action={setSize} size={size} />
+        <SizeSelector action={setStickerSize} size={size} />
       </div>
     </div>
   );

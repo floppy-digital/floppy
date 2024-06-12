@@ -1,28 +1,28 @@
 /* previously in components/ImageEditor/index.js */
 
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setOverlay,
-  setBg,
-  setFg,
-  setCl,
-  setFront,
-  setBack,
-  setRecord,
-} from '@/lib/Redux/editor/global';
+import React, { useEffect, useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import Canvas from '@/components/ImageEditor/Canvas';
 import ControlPanel from '@/components/ImageEditor/ControlPanel';
 import { corsAssetURL, CANVAS_HEIGHT } from '@/lib/utils';
 
 const ImageEditor = () => {
-  const dispatch = useDispatch();
-  const stamp = useSelector((state) => state.editor.global.stamp);
-  const overlay = useSelector((state) => state.editor.global.overlay);
-  const size = useSelector((state) => state.editor.global.size);
-  const filter = useSelector((state) => state.editor.global.filter);
-  const fg = useSelector((state) => state.editor.global.fg);
-  const layer = useSelector((state) => state.editor.global.layer);
+  const {
+    editor,
+    setOverlay,
+    setBgNodes,
+    setFgNodes,
+    setClNodes,
+    setFrontNodes,
+    setBackNodes,
+    setRecordNodes,
+  } = useContext(editorContext);
+  const stamp = editor.stamp;
+  const overlay = editor.overlay;
+  const size = editor.overlaySize;
+  const filter = editor.overlayFilter;
+  const fg = editor.fgNode;
+  const layer = editor.layer;
 
   const drawInitialBg = (ctx1, ctx2, ctx3) => {
     const clTextureImg = new Image(CANVAS_HEIGHT, CANVAS_HEIGHT);
@@ -70,6 +70,7 @@ const ImageEditor = () => {
     const y = e.pageY - (stamp.naturalHeight * size) / 2;
     overlay.style.top = `${y}px`;
     overlay.style.left = `${x}px`;
+    overlay.style.height = `${stamp.naturalHeight * size}px`;
 
     if (
       e.pageX > rect.right ||
@@ -105,33 +106,30 @@ const ImageEditor = () => {
       const _back = document.getElementById('canvas-final-back');
       const _backCtx = _back.getContext('2d');
 
-      dispatch(setFront({ canvas: _front, ctx: _frontCtx }));
-      dispatch(setBack({ canvas: _back, ctx: _backCtx }));
-      dispatch(setOverlay(_overlay));
-      dispatch(setFg({ canvas: _fg, ctx: _fgCtx }));
-      dispatch(setRecord({ canvas: _record, ctx: _recordCtx }));
-      dispatch(
-        setBg({ canvas: _bg, ctx: _bgCtx }, { canvas: _bgTxt, ctx: _bgTxtCtx })
+      setOverlay(_overlay);
+      setFrontNodes({ canvas: _front, ctx: _frontCtx });
+      setBackNodes({ canvas: _back, ctx: _backCtx });
+      setFgNodes({ canvas: _fg, ctx: _fgCtx });
+      setRecordNodes({ canvas: _record, ctx: _recordCtx });
+      setBgNodes(
+        { canvas: _bg, ctx: _bgCtx },
+        { canvas: _bgTxt, ctx: _bgTxtCtx }
       );
-      dispatch(
-        setCl({ canvas: _cl, ctx: _clCtx }, { canvas: _clTxt, ctx: _clTxtCtx })
+      setClNodes(
+        { canvas: _cl, ctx: _clCtx },
+        { canvas: _clTxt, ctx: _clTxtCtx }
       );
       drawInitialBg(_clTxtCtx, _clCtx, _recordCtx);
     };
 
-    // prepareCanvas();
-  }, [dispatch]);
+    prepareCanvas();
+  }, []);
 
   return (
     <div className="editor-wrapper ff-3" id="dub" onMouseMove={moveOverlay}>
       <ControlPanel drawInitialBg={drawInitialBg} />
       <Canvas />
-      <img
-        id="stamp-ol"
-        className="overlay"
-        src={stamp ? stamp.src : ''}
-        height={stamp ? `${stamp.naturalHeight * size}px` : ''}
-      ></img>
+      <img id="stamp-ol" className="overlay" src={stamp ? stamp.src : ''}></img>
     </div>
   );
 };
