@@ -90,10 +90,6 @@ const SaveButton = ({ clearCanvas }) => {
     router.push('/upload');
   };
 
-  useEffect(() => {
-    console.log(editor);
-  }, [editor]);
-
   return (
     <img
       id="save"
