@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Web3 from 'web3';
 import { userContext } from '@/lib/contexts/userContext';
 import { signInWithCustomToken, signOut } from 'firebase/auth';
-import { auth } from '../lib/firebase';
+import { auth } from '@/lib/firebaseClient';
 import axios from 'axios';
 
 const ConnectWalletButton = () => {
@@ -10,13 +10,14 @@ const ConnectWalletButton = () => {
     useContext(userContext);
 
   async function authenticate(address) {
+    const web3 = new Web3(Web3.givenProvider);
+    web3.provider = window.ethereum;
+
     const { data: message } = await axios.get(
       `/api/login/message?address=${address}`
     );
 
-    const web3 = new Web3(Web3.givenProvider);
-
-    const signature = await web3.eth.personal.sign(message, address);
+    const signature = await web3.eth.personal.sign(message, address, '');
 
     const { data: token } = await axios.get(
       `/api/login/token?address=${address}&signature=${signature}`
