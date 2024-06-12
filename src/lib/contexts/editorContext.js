@@ -27,7 +27,7 @@ export const EditorProvider = ({ children }) => {
       dispatch({ type: actions.SET_OVERLAY_FILTER, filter });
     },
     setRecordNodes: (recordNode) => {
-      dispatch({ type: actions.SET_RECORD_NODES, recordNode });
+      dispatch({ type: actions.SET_RECORD_NODE, recordNode });
     },
     setBgNodes: (bgNode, bgTextureNode) => {
       dispatch({ type: actions.SET_BG_NODES, bgNode, bgTextureNode });
@@ -36,13 +36,13 @@ export const EditorProvider = ({ children }) => {
       dispatch({ type: actions.SET_CENTERLABEL_NODES, clNode, clTextureNode });
     },
     setFgNodes: (fgNode) => {
-      dispatch({ type: actions.SET_FG_NODES, fgNode });
+      dispatch({ type: actions.SET_FG_NODE, fgNode });
     },
-    setFrontNodes: (front) => {
-      dispatch({ type: actions.SET_FRONT_NODES, front });
+    setFrontNodes: (frontNode) => {
+      dispatch({ type: actions.SET_FRONT_NODE, frontNode });
     },
-    setBackNodes: (back) => {
-      dispatch({ type: actions.SET_BACK_NODES, back });
+    setBackNodes: (backNode) => {
+      dispatch({ type: actions.SET_BACK_NODE, backNode });
     },
     setCLStampSize: (size) => {
       dispatch({ type: actions.SET_CL_STAMP_SIZE, size });

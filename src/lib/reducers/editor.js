@@ -4,13 +4,13 @@ export const actions = {
   SET_LAYER: 'SET_LAYER',
   SET_OVERLAY: 'SET_OVERLAY',
   SET_OVERLAY_SIZE: 'SET_OVERLAY_SIZE',
-  SET_RECORD_NODES: 'SET_RECORD_NODES',
+  SET_RECORD_NODE: 'SET_RECORD_NODE',
   SET_OVERLAY_FILTER: 'SET_OVERLAY_FILTER',
   SET_BG_NODES: 'SET_BG_NODES',
   SET_CENTERLABEL_NODES: 'SET_CENTERLABEL_NODES',
-  SET_FG_NODES: 'SET_FG_NODES',
-  SET_FRONT_NODES: 'SET_FRONT_NODES',
-  SET_BACK_NODES: 'SET_BACK_NODES',
+  SET_FG_NODE: 'SET_FG_NODE',
+  SET_FRONT_NODE: 'SET_FRONT_NODE',
+  SET_BACK_NODE: 'SET_BACK_NODE',
   SET_CL_STAMP_SIZE: 'SET_CL_STAMP_SIZE',
   SET_CL_STAMP_FILTER: 'SET_CL_STAMP_FILTER',
   SET_CL_STAMP_COLOR: 'SET_CL_STAMP_COLOR',
@@ -91,7 +91,7 @@ export const editorReducer = (state = initState, action) => {
       return { ...state, overlaySize: action.size };
     case actions.SET_OVERLAY_FILTER:
       return { ...state, overlayFilter: action.filter };
-    case actions.SET_RECORD_NODES:
+    case actions.SET_RECORD_NODE:
       return { ...state, recordNode: action.recordNode };
     case actions.SET_BG_NODES:
       return {
@@ -105,11 +105,11 @@ export const editorReducer = (state = initState, action) => {
         clNode: action.clNode,
         clTextureNode: action.clTextureNode,
       };
-    case actions.SET_FG_NODES:
+    case actions.SET_FG_NODE:
       return { ...state, fgNode: action.fgNode };
-    case actions.SET_FRONT_NODES:
+    case actions.SET_FRONT_NODE:
       return { ...state, frontNode: action.frontNode };
-    case actions.SET_BACK_NODES:
+    case actions.SET_BACK_NODE:
       return { ...state, backNode: action.backNode };
     case actions.SET_CL_STAMP_SIZE:
       return { ...state, cl: { ...state.cl, stampSize: action.size } };
