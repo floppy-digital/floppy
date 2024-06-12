@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { editorContext } from '@/lib/contexts/editorContext';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import { corsAssetURL } from '@/lib/utils';
-import { setArtist, setTrack } from '@/lib/Redux/metadata';
 import {
   ColorSelector,
   SizeSelector,
@@ -10,6 +10,7 @@ import {
 } from './Controls';
 
 const CenterLabel = ({ chooseStamp }) => {
+  const { setArtist, setTrack } = useContext(metadataContext);
   const {
     editor,
     setCLStampSize,

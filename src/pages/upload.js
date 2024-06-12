@@ -1,19 +1,21 @@
 /* previously in components/Upload.js */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
 import { corsAssetURL, moralisGateway } from '@/lib/utils';
 import { saveAssetsToIPFS, saveMetadataToIPFS } from '@/lib/ipfs';
 import { uploadDubplate } from '@/lib/db';
 
 export default function Upload() {
-  const isAuthenticated = useSelector((state) => state.user.authenticated);
-  const frontURL = useSelector((state) => state.metadata.frontURL);
-  const backURL = useSelector((state) => state.metadata.backURL);
-  const audioURL = useSelector((state) => state.metadata.audioURL);
-  const artist = useSelector((state) => state.metadata.artist);
-  const track = useSelector((state) => state.metadata.track);
+  const { metadata } = useContext(metadataContext);
+  const isAuthenticated = true;
+  // const isAuthenticated = user.authenticated;
+  const frontURL = metadata.frontURL;
+  const backURL = metadata.backURL;
+  const audioURL = metadata.audioURL;
+  const artist = metadata.artist;
+  const track = metadata.track;
   const [artistName, setArtistName] = useState('');
   const [trackName, setTrackName] = useState('');
   const [price, setPrice] = useState(0);
@@ -141,7 +143,7 @@ export default function Upload() {
           src={`${corsAssetURL}/bg_images/save_redux.png`}
           onClick={saveFinal}
         />
-        <button onClick={() => navigate('/')}>X</button>
+        <button onClick={() => router.push('/')}>X</button>
       </div>
       {showMessage && (
         <div className="message-container crates-border">

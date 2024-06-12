@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { editorContext } from '@/lib/contexts/editorContext';
-import { setArtist, setTrack } from '@/lib/Redux/metadata';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import SaveButton from './SaveButton';
 import LayerSelector from '@/components/ImageEditor/ControlPanel/LayerSelector';
 import { corsAssetURL } from '@/lib/utils';
 
 const ControlPanel = ({ drawInitialBg }) => {
   const { editor } = useContext(editorContext);
+  const { setArtist, setTrack } = useContext(metadataContext);
   const fg = editor.fgNode;
   const bg = editor.bgNode;
   const bgTxt = editor.bgTextureNode;
@@ -26,8 +27,8 @@ const ControlPanel = ({ drawInitialBg }) => {
 
   const reset = () => {
     clearCanvas();
-    // dispatch(setArtist(''));
-    // dispatch(setTrack(''));
+    setArtist('');
+    setTrack('');
   };
 
   return (

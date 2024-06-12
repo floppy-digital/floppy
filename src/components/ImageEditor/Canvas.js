@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { editorContext } from '@/lib/contexts/editorContext';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import Draggable from 'react-draggable';
 
 import { CANVAS_HEIGHT } from '@/lib/utils';
@@ -7,6 +8,7 @@ import { CANVAS_HEIGHT } from '@/lib/utils';
 const Canvas = () => {
   const { editor, setArtistPosition, setTrackPosition } =
     useContext(editorContext);
+  const { metadata } = useContext(metadataContext);
   const stamp = editor.stamp;
   const layer = editor.layer;
   const size = editor.overlaySize;
@@ -19,10 +21,8 @@ const Canvas = () => {
   const trackFont = editor.cl.trackFont;
   const trackSize = editor.cl.trackFontSize;
   const trackColor = editor.cl.trackFontColor;
-  const artist = 'artist';
-  const track = 'track';
-  // const artist = metadata.artist;
-  // const track = metadata.track;
+  const artist = metadata.artist;
+  const track = metadata.track;
   const [coords, setCoords] = useState(null);
 
   const handleStop = (e) => {

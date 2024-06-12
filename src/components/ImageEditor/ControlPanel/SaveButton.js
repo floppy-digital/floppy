@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { editorContext } from '@/lib/contexts/editorContext';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import { useRouter } from 'next/router';
-import { setFrontURL, setBackURL } from '@/lib/Redux/metadata';
 import { corsAssetURL } from '@/lib/utils';
 
 const SaveButton = ({ clearCanvas }) => {
   const router = useRouter();
   const { editor } = useContext(editorContext);
-  const artist = 'artist';
-  const track = 'track';
-  // const artist = metadata.artist;
-  // const track = metadata.track;
+  const { metadata, setFrontURL, setBackURL } = useContext(metadataContext);
+  const artist = metadata.artist;
+  const track = metadata.track;
   const artistPos = editor.cl.artistPosition;
   const artistFont = editor.cl.artistFont;
   const artistFontSize = editor.cl.artistFontSize;
@@ -25,8 +24,8 @@ const SaveButton = ({ clearCanvas }) => {
   const cl = editor.clNode;
   const clTxt = editor.clTextureNode;
   const record = editor.recordNode;
-  const front = editor.front;
-  const back = editor.back;
+  const front = editor.frontNode;
+  const back = editor.backNode;
 
   const writeTextToCanvas = (ctx, text, posX, posY, artist = true) => {
     if (artist) {
@@ -75,8 +74,8 @@ const SaveButton = ({ clearCanvas }) => {
     back.ctx.restore();
     const backImgURL = back.canvas.toDataURL('image/png');
 
-    // dispatch(setFrontURL(frontImgURL));
-    // dispatch(setBackURL(backImgURL));
+    setFrontURL(frontImgURL);
+    setBackURL(backImgURL);
   };
 
   const clearAndReset = () => {
@@ -90,6 +89,10 @@ const SaveButton = ({ clearCanvas }) => {
     clearAndReset();
     router.push('/upload');
   };
+
+  useEffect(() => {
+    console.log(editor);
+  }, [editor]);
 
   return (
     <img
