@@ -1,13 +1,12 @@
 'use client';
 import '@/styles/globals.css';
 import '@/styles/main.css';
-import { Provider } from 'react-redux';
-import store from '@/lib/store';
+import { EditorProvider } from '@/lib/contexts/editorContext';
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <EditorProvider>
       <Component {...pageProps} />
-    </Provider>
+    </EditorProvider>
   );
 }
