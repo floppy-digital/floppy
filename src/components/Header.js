@@ -1,10 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { userContext } from '@/lib/contexts/userContext';
 import ConnectWalletButton from './ConnectWalletButton';
 
 const Header = () => {
-  const isAuthenticated = useSelector((state) => state.user.authenticated);
-  const address = useSelector((state) => state.user.address);
+  const { address, isAuthenticated } = useContext(userContext);
 
   return (
     <div id="header">

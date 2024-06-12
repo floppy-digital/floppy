@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Web3 from 'web3';
+import { userContext } from '@/lib/contexts/userContext';
 import { signInWithCustomToken, signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAuthenticated, setAddress } from '../Redux/user';
 import axios from 'axios';
 
 const ConnectWalletButton = () => {
-  const isAuthenticated = useSelector((state) => state.user.authenticated);
-  const dispatch = useDispatch();
+  const { isAuthenticated, setIsAuthenticated, setAddress } =
+    useContext(userContext);
 
   async function authenticate(address) {
     const { data: message } = await axios.get(
@@ -24,8 +23,8 @@ const ConnectWalletButton = () => {
     );
 
     await signInWithCustomToken(auth, token);
-    dispatch(setAuthenticated(true));
-    dispatch(setAddress(address));
+    setIsAuthenticated(true);
+    setAddress(address);
   }
 
   async function login() {
@@ -41,8 +40,8 @@ const ConnectWalletButton = () => {
   }
 
   async function logout() {
-    dispatch(setAuthenticated(false));
-    dispatch(setAddress(null));
+    setIsAuthenticated(false);
+    setAddress(null);
     signOut(auth);
   }
 

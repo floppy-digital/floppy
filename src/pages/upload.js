@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import { metadataContext } from '@/lib/contexts/metadataContext';
+import { userContext } from '@/lib/contexts/userContext';
 import { useRouter } from 'next/router';
 import { corsAssetURL, moralisGateway } from '@/lib/utils';
 import { saveAssetsToIPFS, saveMetadataToIPFS } from '@/lib/ipfs';
@@ -9,8 +10,7 @@ import { uploadDubplate } from '@/lib/db';
 
 export default function Upload() {
   const { metadata } = useContext(metadataContext);
-  const isAuthenticated = true;
-  // const isAuthenticated = user.authenticated;
+  const { isAuthenticated } = useContext(userContext);
   const frontURL = metadata.frontURL;
   const backURL = metadata.backURL;
   const audioURL = metadata.audioURL;
