@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@metamask/eth-sig-util": "^7.0.2",
     "@react-three/fiber": "^8.16.8",
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
@@ -19,7 +20,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-draggable": "^4.4.6",
-    "three": "^0.165.0"
+    "three": "^0.165.0",
+    "web3": "^4.9.0"
   },
   "devDependencies": {
     "eslint": "^8",
