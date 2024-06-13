@@ -1,0 +1,459 @@
+@font-face {
+  font-family: 'AddCityboy';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/AddCityboyNormal.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/AddCityboyNormal.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/AddCityboyNormal.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Art Greco';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArtGreco.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArtGreco.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArtGreco.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CapitalisTypOasis';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/CapitalisTypOasisMedium.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/CapitalisTypOasisMedium.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/CapitalisTypOasisMedium.ttf')
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Argos George Contour';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArgosGeorgeContour.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArgosGeorgeContour.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ArgosGeorgeContour.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Eat your heart out';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Eatyourheartout.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Eatyourheartout.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Eatyourheartout.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'diel-Regular';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/diel-Regular.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/diel-Regular.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/diel-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ExtraBlur';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ExtraBlur.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ExtraBlur.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ExtraBlur.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Emilio 20';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Emilio20.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Emilio20.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Emilio20.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'El&Font Bubble';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ElFontBubble.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ElFontBubble.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ElFontBubble.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KleinsThreePixel';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreePixel.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreePixel.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreePixel.ttf')
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'wassimo graffiti';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/wassimograffiti.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/wassimograffiti.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/wassimograffiti.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fat Wandals PERSONAL USE';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/FatWandalsPERSONALUSE.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/FatWandalsPERSONALUSE.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/FatWandalsPERSONALUSE.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grid Fracture';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Grid-Fracture-.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Grid-Fracture-.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Grid-Fracture-.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gas Mask Warriors';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/GasMaskWarriors.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/GasMaskWarriors.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/GasMaskWarriors.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KleinsThreeFS';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreeFS.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreeFS.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/KleinsThreeFS.ttf')
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mionta';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Mionta.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Mionta.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Mionta.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mainstream PERSONAL USE ONLY';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MainstreamPERSONALUSEONLY.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MainstreamPERSONALUSEONLY.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MainstreamPERSONALUSEONLY.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Movie Poster Personal Use';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MoviePosterPersonalUse.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MoviePosterPersonalUse.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MoviePosterPersonalUse.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Olde English';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OldeEnglish-Regular.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OldeEnglish-Regular.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OldeEnglish-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Opiated BRK';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OpiatedBRK.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OpiatedBRK.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OpiatedBRK.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OptimusPrinceps';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OptimusPrinceps.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OptimusPrinceps.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/OptimusPrinceps.ttf')
+      format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RaseBasic';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/RaseBasic.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/RaseBasic.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/RaseBasic.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Spire Alt';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpireAlt.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpireAlt.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpireAlt.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'row-Regular';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/row-Regular.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/row-Regular.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/row-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SANTOS DUMONT';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SANTOSDUMONT.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SANTOSDUMONT.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SANTOSDUMONT.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/NeueHaasDisplay-Black.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/NeueHaasDisplay-Black.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/NeueHaasDisplay-Black.ttf')
+      format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sans Poster Bold JL';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SansPosterBoldJL.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SansPosterBoldJL.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SansPosterBoldJL.ttf')
+      format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plasmatica Open';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/PlasmaticaOpen-Italic.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/PlasmaticaOpen-Italic.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/PlasmaticaOpen-Italic.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univox';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Univox-Regular.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Univox-Regular.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Univox-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Spoken PERSONAL USE ONLY';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpokenPERSONALUSEONLY.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpokenPERSONALUSEONLY.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SpokenPERSONALUSEONLY.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zimbra';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Zimbra-Bold.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Zimbra-Bold.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Zimbra-Bold.ttf')
+      format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SPEW';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SPEW.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SPEW.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/SPEW.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Thorne Shaded';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ThorneShaded.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ThorneShaded.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/ThorneShaded.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'pix Chicago';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/pixChicago.woff2')
+      format('woff2'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/pixChicago.woff')
+      format('woff'),
+    url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/pixChicago.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cytone-Regular';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/Cytone-Regular.otf')
+    format('opentype');
+}
+
+@font-face {
+  font-family: 'Malayalam-Bold';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MalayalamMN-Bold-02.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Malayalam';
+  src: url('https://dg3mov3znt8u.cloudfront.net/upload/converted_fonts/MalayalamMN-01.ttf')
+    format('truetype');
+}
