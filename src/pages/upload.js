@@ -21,7 +21,6 @@ export default function Upload() {
   const [price, setPrice] = useState(0);
   const [message, setMessage] = useState('uploading...');
   const [showMessage, setShowMessage] = useState(false);
-  const [audioSrc, setAudioSrc] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const router = useRouter();
 
@@ -29,75 +28,94 @@ export default function Upload() {
     setPrice(e.target.value);
   };
 
-  const saveToDatabase = async (front, back, artist, track) => {
-    if (isAuthenticated) {
-      const frontImage = {
-        path: `${encodeURIComponent(trackName)}_front.png`,
-        content: front,
+  const blobToBase64 = (url) => {
+    return new Promise(async (resolve, _) => {
+      const res = await fetch(url);
+      const blob = await res.blob();
+
+      let reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = function () {
+        resolve(reader.result);
       };
+    });
+  };
 
-      const backImage = {
-        path: `${encodeURIComponent(trackName)}_back.png`,
-        content: back,
-      };
+  const saveToDatabase = async () => {
+    const frontImage = {
+      path: `${encodeURIComponent(trackName)}_front.png`,
+      content: frontURL,
+    };
 
-      const hashes = await saveAssetsToIPFS(frontImage, backImage);
+    const backImage = {
+      path: `${encodeURIComponent(trackName)}_back.png`,
+      content: backURL,
+    };
 
-      const metadata = {
-        name: `${artist} - ${track}`,
-        description: 'a floppy dubplate',
-        image: hashes[0],
-        animation_url: audioURL,
-      };
+    const audioBase64 = await blobToBase64(audioURL);
 
-      const metadataHash = await saveMetadataToIPFS(
-        btoa(JSON.stringify(metadata)),
-        `${encodeURIComponent(track)}_metadata.json`
-      );
+    const audioData = {
+      path: `${encodeURIComponent(trackName)}.webm`,
+      content: audioBase64,
+    };
 
-      const audio = document.getElementById('audio');
-      const audioDuration = (audio.duration / 60).toFixed(2).replace('.', ':');
+    const hashes = await saveAssetsToIPFS(frontImage, backImage, audioData);
 
-      await uploadDubplate({
-        artist: artist,
-        track: track,
-        price: price,
-        front: hashes[0],
-        back: hashes[1],
-        audio: audioURL,
-        length: audioDuration,
-        metadataHash: metadataHash,
-        status: 'new',
-      });
+    const metadata = {
+      name: `${artistName} - ${trackName}`,
+      description: 'a floppy dubplate',
+      image: hashes[0],
+      animation_url: hashes[2],
+    };
 
-      setMessage('object saved successfully');
-    } else {
+    const metadataHash = await saveMetadataToIPFS(
+      btoa(JSON.stringify(metadata)),
+      `${encodeURIComponent(trackName)}_metadata.json`
+    );
+
+    const audio = document.getElementById('audio');
+    const audioDuration = (audio.duration / 60).toFixed(2).replace('.', ':');
+
+    await uploadDubplate({
+      artist: artistName,
+      track: trackName,
+      price: price,
+      front: hashes[0],
+      back: hashes[1],
+      audio: hashes[2],
+      length: audioDuration,
+      metadataHash: metadataHash,
+      status: 'new',
+    });
+
+    setMessage('object saved successfully');
+  };
+
+  const saveFinal = async () => {
+    if (disabled) {
+      setMessage('please fill out all fields');
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+        setMessage('uploading...');
+      }, 2000);
+    } else if (!isAuthenticated) {
       setMessage('please connect wallet to upload');
       setShowMessage(true);
       setTimeout(() => {
         setShowMessage(false);
         setMessage('uploading...');
       }, 2000);
-    }
-  };
-
-  const saveFinal = async () => {
-    if (disabled) return;
-    else {
+    } else {
       setDisabled(true);
       setShowMessage(true);
-      await saveToDatabase(frontURL, backURL, artistName, trackName);
+      await saveToDatabase();
       router.push('/crates');
     }
   };
 
   useEffect(() => {
-    if (
-      artistName.length > 0 &&
-      trackName.length > 0 &&
-      price > 0 &&
-      audioURL.length > 0
-    ) {
+    if (artistName.length > 0 && trackName.length > 0 && audioURL.length > 0) {
       setDisabled(false);
     }
   }, [artistName, trackName, price, audioURL]);
@@ -106,7 +124,6 @@ export default function Upload() {
     const onLoad = () => {
       setArtistName(artist);
       setTrackName(track);
-      setAudioSrc(`${moralisGateway}/${audioURL}`);
     };
     onLoad();
   }, []);
@@ -137,7 +154,6 @@ export default function Upload() {
           value={price}
         ></input>
         {audioURL && <audio id="audio" src={audioURL} controls></audio>}
-        {/* {audioSrc && <audio id="audio" src={audioSrc} controls></audio>} */}
         <img
           id="upload-save"
           src={`${corsAssetURL}/bg_images/save_redux.png`}

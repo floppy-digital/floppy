@@ -1,11 +1,20 @@
 const axios = require('axios');
 
+export const config = {
+  api: {
+    responseLimit: false,
+    bodyParser: {
+      sizeLimit: '10mb',
+    },
+  },
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.send(501);
   } else {
     try {
-      const { front, back } = req.body;
+      const { front, back, audio } = req.body;
 
       const options = {
         method: 'POST',
@@ -23,6 +32,10 @@ export default async function handler(req, res) {
           {
             content: back.content,
             path: back.path,
+          },
+          {
+            content: audio.content,
+            path: audio.path,
           },
         ],
       };
