@@ -28,6 +28,8 @@ const CenterLabel = ({ chooseStamp }) => {
   const clColor = editor.cl.clColor;
   const stampColor = editor.cl.stampColor;
   const stampSize = editor.cl.stampSize;
+  const artistFont = editor.cl.artistFont;
+  const trackFont = editor.cl.trackFont;
   const artistColor = editor.cl.artistFontColor;
   const trackColor = editor.cl.trackFontColor;
   const artistFontSize = editor.cl.artistFontSize;
@@ -79,6 +81,7 @@ const CenterLabel = ({ chooseStamp }) => {
               action={setArtist}
               title={'Artist Name'}
               label={'artist-text'}
+              fontSrc={artistFont}
             />
             <div className="font-and-size">
               <FontSelector action={setArtistFont} destination="artist" />
@@ -101,6 +104,7 @@ const CenterLabel = ({ chooseStamp }) => {
               action={setTrack}
               title={'Track Name'}
               label={'track-text'}
+              fontSrc={trackFont}
             />
             <div className="font-and-size">
               <FontSelector action={setTrackFont} destination="track" />
