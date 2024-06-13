@@ -1,11 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setLayer,
-  setStamp,
-  setSize,
-  setFilter,
-} from '@/lib/Redux/editor/global';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import Templates from './Templates';
 import Stamps from './Stamps';
 import Stickers from './Stickers';
@@ -13,15 +7,16 @@ import CenterLabel from './CenterLabel';
 import { corsAssetURL } from '@/lib/utils';
 
 const LayerTitle = ({ title, size, filter }) => {
-  const dispatch = useDispatch();
-  const layer = useSelector((state) => state.editor.global.layer);
+  const { editor, setLayer, setStamp, setStampSize, setStampFilter } =
+    useContext(editorContext);
+  const layer = editor.layer;
   const state = layer == title ? 'clicked' : 'default';
 
   const chooseLayer = (e) => {
-    dispatch(setLayer(e.target.id));
-    dispatch(setStamp(null));
-    dispatch(setSize(size));
-    dispatch(setFilter(filter));
+    setLayer(e.target.id);
+    setStamp(null);
+    setStampSize(size);
+    setStampFilter(filter);
   };
   return (
     <img
@@ -33,21 +28,21 @@ const LayerTitle = ({ title, size, filter }) => {
 };
 
 const LayerSelector = () => {
-  const dispatch = useDispatch();
-  const stamp = useSelector((state) => state.editor.global.stamp);
-  const layer = useSelector((state) => state.editor.global.layer);
-  const templateFilter = useSelector((state) => state.editor.template.filter);
-  const clStampFilter = useSelector((state) => state.editor.cl.stampFilter);
-  const clStampSize = useSelector((state) => state.editor.cl.stampSize);
-  const stampSize = useSelector((state) => state.editor.stamps.size);
-  const stampFilter = useSelector((state) => state.editor.stamps.filter);
-  const stickerSize = useSelector((state) => state.editor.stickers.size);
+  const { editor, setStamp } = useContext(editorContext);
+  const stamp = editor.stamp;
+  const layer = editor.layer;
+  const templateFilter = editor.template.filter;
+  const clStampFilter = editor.cl.stampFilter;
+  const clStampSize = editor.cl.stampSize;
+  const stampSize = editor.stamps.size;
+  const stampFilter = editor.stamps.filter;
+  const stickerSize = editor.stickerSize;
 
   const chooseStamp = (e) => {
     if (stamp) {
       stamp.classList.remove('selected');
     }
-    dispatch(setStamp(e.target));
+    setStamp(e.target);
     e.target.classList.add('selected');
   };
 

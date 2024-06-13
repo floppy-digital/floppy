@@ -1,30 +1,22 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { setTrack, setAudioURL } from '@/lib/Redux/metadata';
 import HTMLPlayer from '@/components/HTMLPlayer';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import { listenForRecordOn, listenForRecordOff } from '@/lib/db';
 
 const initialMessage = 'new upload, do you want to go to the image editor?';
 
 const Game = () => {
+  const { setAudioURL } = useContext(metadataContext);
   const [started, setStarted] = useState(false);
   const [playerIP, setPlayerIP] = useState();
   const [ctx, setCtx] = useState(null);
-  // const address = useSelector((state) => state.user.address);
   const [uploadMessage, setUploadMessage] = useState(initialMessage);
   const [showUploadMessage, setShowUploadMessage] = useState(false);
-  // const [uploadData, setUploadData] = useState({});
   const sourceRef = useRef();
   const recorderRef = useRef();
   const recordedChunksRef = useRef();
-
-  const introModalRef = useRef();
-  const videoOneRef = useRef();
-  const loadingVideoRef = useRef();
-  const loadingAudioRef = useRef();
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const record = () => {
@@ -49,7 +41,9 @@ const Game = () => {
   };
 
   const handleData = async () => {
-    const blob = new Blob(recordedChunksRef.current);
+    const blob = new Blob(recordedChunksRef.current, {
+      type: recorderRef.current.mimeType,
+    });
     const url = URL.createObjectURL(blob);
     sourceRef.current = url;
   };
@@ -62,7 +56,7 @@ const Game = () => {
   };
 
   const go = () => {
-    dispatch(setAudioURL(sourceRef.current));
+    setAudioURL(sourceRef.current);
     router.push('/editor');
   };
 

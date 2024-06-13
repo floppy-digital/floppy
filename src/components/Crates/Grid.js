@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { moralisGateway, assetBaseURL } from '../../lib/utils';
+import { moralisGateway, corsAssetURL } from '../../lib/utils';
 import { fetchDubplates } from '../../lib/db';
 
 const AudioPlayer = ({ dubplate, index, modal = false }) => {
   const audioRef = useRef();
   const timelineRef = useRef();
   const [src, setSrc] = useState(
-    `${assetBaseURL}/crates_ui_assets/cratesplaybutton_sizedforpopup.png`
+    `${corsAssetURL}/crates_ui_assets/cratesplaybutton_sizedforpopup.png`
   );
   const size = modal ? '-large' : '';
 
@@ -17,11 +17,11 @@ const AudioPlayer = ({ dubplate, index, modal = false }) => {
       audioRef.current.currentTime == audioRef.current.duration
     ) {
       audioRef.current.play();
-      setSrc(`${assetBaseURL}/listener_3d_assets/Pause_button.png`);
+      setSrc(`${corsAssetURL}/listener_3d_assets/Pause_button.png`);
     } else {
       audioRef.current.pause();
       setSrc(
-        `${assetBaseURL}/crates_ui_assets/cratesplaybutton_sizedforpopup.png`
+        `${corsAssetURL}/crates_ui_assets/cratesplaybutton_sizedforpopup.png`
       );
     }
   };
@@ -70,7 +70,7 @@ const AudioPlayer = ({ dubplate, index, modal = false }) => {
         <img
           crossOrigin="anonymous"
           className={`audio-player-timeline-bg${size}`}
-          src={`${assetBaseURL}/crates_ui_assets/audioplayerbar_sizedforpopup.png`}
+          src={`${corsAssetURL}/crates_ui_assets/audioplayerbar_sizedforpopup.png`}
         ></img>
       </div>
       <audio
@@ -89,7 +89,7 @@ const Modal = ({ dubplate, setViewSingle, index }) => {
       <img
         crossOrigin="anonymous"
         className="absolute grid-view-modal-close"
-        src={`${assetBaseURL}/crates_ui_assets/x_outofpopup.png`}
+        src={`${corsAssetURL}/crates_ui_assets/x_outofpopup.png`}
         onClick={() => {
           setViewSingle(false);
         }}
@@ -118,7 +118,7 @@ const Modal = ({ dubplate, setViewSingle, index }) => {
       <img
         crossOrigin="anonymous"
         className="grid-view-single-buy"
-        src={`${assetBaseURL}/crates_ui_assets/buybutton_sizedforpopup.png`}
+        src={`${corsAssetURL}/crates_ui_assets/buybutton_sizedforpopup.png`}
       ></img>
     </div>
   );
@@ -142,7 +142,7 @@ const GridItem = ({ dubplate, openModal, index }) => {
         <p>{dubplate.price ? dubplate.price : '0.1'} ETH</p>
         <img
           crossOrigin="anonymous"
-          src={`${assetBaseURL}/crates_ui_assets/buybutton_sizedforpopup.png`}
+          src={`${corsAssetURL}/crates_ui_assets/buybutton_sizedforpopup.png`}
         ></img>
       </div>
     </div>
@@ -173,7 +173,7 @@ const Grid = () => {
     <div className="grid-view-wrapper">
       <img
         crossOrigin="anonymous"
-        src={`${assetBaseURL}/crates_ui_assets/floppycratesbanner.png`}
+        src={`${corsAssetURL}/crates_ui_assets/floppycratesbanner.png`}
         height="150px"
         width="auto"
       ></img>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@metamask/eth-sig-util": "^7.0.2",
     "@react-three/fiber": "^8.16.8",
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
@@ -16,18 +17,16 @@
     "firebase": "^10.12.2",
     "firebase-admin": "^12.1.1",
     "next": "14.2.3",
-    "next-redux-wrapper": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-draggable": "^4.4.6",
-    "react-redux": "^9.1.2",
-    "three": "^0.165.0"
+    "three": "^0.165.0",
+    "web3": "^4.9.0"
   },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
-    "redux-logger": "^3.0.6",
     "tailwindcss": "^3.4.1"
   }
 }

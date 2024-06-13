@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Web3 from 'web3';
+import { userContext } from '@/lib/contexts/userContext';
 import { signInWithCustomToken, signOut } from 'firebase/auth';
-import { auth } from '../lib/firebase';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAuthenticated, setAddress } from '../Redux/user';
+import { auth } from '@/lib/firebaseClient';
 import axios from 'axios';
 
 const ConnectWalletButton = () => {
-  const isAuthenticated = useSelector((state) => state.user.authenticated);
-  const dispatch = useDispatch();
+  const { isAuthenticated, setIsAuthenticated, setAddress } =
+    useContext(userContext);
 
   async function authenticate(address) {
+    const web3 = new Web3(Web3.givenProvider);
+    web3.provider = window.ethereum;
+
     const { data: message } = await axios.get(
       `/api/login/message?address=${address}`
     );
 
-    const web3 = new Web3(Web3.givenProvider);
-
-    const signature = await web3.eth.personal.sign(message, address);
+    const signature = await web3.eth.personal.sign(message, address, '');
 
     const { data: token } = await axios.get(
       `/api/login/token?address=${address}&signature=${signature}`
     );
 
     await signInWithCustomToken(auth, token);
-    dispatch(setAuthenticated(true));
-    dispatch(setAddress(address));
+    setIsAuthenticated(true);
+    setAddress(address);
   }
 
   async function login() {
@@ -41,8 +41,8 @@ const ConnectWalletButton = () => {
   }
 
   async function logout() {
-    dispatch(setAuthenticated(false));
-    dispatch(setAddress(null));
+    setIsAuthenticated(false);
+    setAddress(null);
     signOut(auth);
   }
 

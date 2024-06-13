@@ -1,16 +1,15 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setTemplate } from '@/lib/Redux/editor/global';
-import { setFilter, setColor } from '@/lib/Redux/editor/template';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
 import { corsAssetURL, CANVAS_HEIGHT } from '@/lib/utils';
 import { ColorSelector } from './Controls';
 
 const Templates = () => {
-  const dispatch = useDispatch();
-  const bg = useSelector((state) => state.editor.global.bg);
-  const bgT = useSelector((state) => state.editor.global.bgTexture);
-  const colorValue = useSelector((state) => state.editor.template.color);
-  const filter = useSelector((state) => state.editor.template.filter);
+  const { editor, setTemplate, setTemplateFilter, setTemplateColor } =
+    useContext(editorContext);
+  const bg = editor.bgNode;
+  const bgT = editor.bgTextureNode;
+  const colorValue = editor.template.color;
+  const filter = editor.template.filter;
 
   const drawBg = (e) => {
     const baseString = e.target.src.split('_')[0];
@@ -34,7 +33,7 @@ const Templates = () => {
       bgT.ctx.drawImage(textureImg, 0, 0, textureImg.width, textureImg.height);
     };
 
-    dispatch(setTemplate(e.target));
+    setTemplate(e.target);
   };
 
   return (
@@ -58,8 +57,8 @@ const Templates = () => {
       </div>
       <div className="controls-container">
         <ColorSelector
-          action={setFilter}
-          action2={setColor}
+          action={setTemplateFilter}
+          action2={setTemplateColor}
           value={colorValue}
           isTemplate={true}
         />

@@ -1,18 +1,19 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setArtist, setTrack } from '@/lib/Redux/metadata';
+import React, { useContext } from 'react';
+import { editorContext } from '@/lib/contexts/editorContext';
+import { metadataContext } from '@/lib/contexts/metadataContext';
 import SaveButton from './SaveButton';
 import LayerSelector from '@/components/ImageEditor/ControlPanel/LayerSelector';
 import { corsAssetURL } from '@/lib/utils';
 
 const ControlPanel = ({ drawInitialBg }) => {
-  const dispatch = useDispatch();
-  const fg = useSelector((state) => state.editor.global.fg);
-  const bg = useSelector((state) => state.editor.global.bg);
-  const bgTxt = useSelector((state) => state.editor.global.bgTexture);
-  const record = useSelector((state) => state.editor.global.record);
-  const cl = useSelector((state) => state.editor.global.cl);
-  const clTxt = useSelector((state) => state.editor.global.clTexture);
+  const { editor } = useContext(editorContext);
+  const { setArtist, setTrack } = useContext(metadataContext);
+  const fg = editor.fgNode;
+  const bg = editor.bgNode;
+  const bgTxt = editor.bgTextureNode;
+  const record = editor.recordNode;
+  const cl = editor.clNode;
+  const clTxt = editor.clTextureNode;
 
   const clearCanvas = () => {
     fg.ctx.clearRect(0, 0, fg.canvas.width, fg.canvas.height);
@@ -26,8 +27,8 @@ const ControlPanel = ({ drawInitialBg }) => {
 
   const reset = () => {
     clearCanvas();
-    dispatch(setArtist(''));
-    dispatch(setTrack(''));
+    setArtist('');
+    setTrack('');
   };
 
   return (
