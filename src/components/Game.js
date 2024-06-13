@@ -41,7 +41,9 @@ const Game = () => {
   };
 
   const handleData = async () => {
-    const blob = new Blob(recordedChunksRef.current);
+    const blob = new Blob(recordedChunksRef.current, {
+      type: recorderRef.current.mimeType,
+    });
     const url = URL.createObjectURL(blob);
     sourceRef.current = url;
   };
