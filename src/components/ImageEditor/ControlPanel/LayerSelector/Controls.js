@@ -40,7 +40,7 @@ const ColorSelector = ({
   };
 
   const setTextColor = (e) => {
-    e.target.value;
+    action(e.target.value);
   };
 
   const setColorFilter = (e) => {
@@ -112,7 +112,7 @@ const SizeSelector = ({ action, size, text = false }) => {
   );
 };
 
-const TextInput = ({ action, label }) => {
+const TextInput = ({ action, label, fontSrc }) => {
   const { setStamp } = useContext(editorContext);
 
   const hideOverlay = () => {
@@ -123,7 +123,7 @@ const TextInput = ({ action, label }) => {
     action(e.target.value);
   };
   return (
-    <div className="text-input" id={label}>
+    <div className={`text-input ${fontSrc.class}`} id={label}>
       <input onChange={write} onClick={hideOverlay}></input>
     </div>
   );
